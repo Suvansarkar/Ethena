@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for the Ethena testing platform",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx nodemon",
+    "build": "npx tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "Suvan Sarkar",
+  "license": "ISC",
+  "dependencies": {
+    "@types/morgan": "^1.9.9",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "nodemon": "^3.1.7",
+    "prisma": "^6.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
