@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        satoshi: ["var(--font-satoshi-variable)"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
