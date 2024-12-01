@@ -1,12 +1,9 @@
 "use client";
 import { ChevronDown, EllipsisVertical, Info } from "lucide-react";
-import Button from "./elements/Button";
 import Image from "next/image";
 import { useState } from "react";
 import { useResposeStore, useStore } from "../lib/store";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { getScore } from "../lib/utils";
 
 export default function QuestionSelector({
   questions,
@@ -15,13 +12,10 @@ export default function QuestionSelector({
   questions: any[];
   id: string;
 }) {
-  const [expanded, setExpanded] = useState<Boolean>(true);
+  const [expanded, setExpanded] = useState<boolean>(true);
 
   const setQuestion = useStore((state) => state.setQuestion);
-  const currentQuestion = useStore((state) => state.currentQuestion);
   const answers = useResposeStore((state) => state.answers);
-
-  const router = useRouter();
 
   function getColor(id: number) {
     const result = answers.find((answer) => answer.id === id);

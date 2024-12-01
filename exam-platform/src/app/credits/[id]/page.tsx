@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import { useResposeStore } from "../../lib/store";
 
-export default function CreditsPage({ params }: { params: { id: string } }) {
+export default function CreditsPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const answers = useResposeStore((state) => state.answers);
   const [score, setScore] = useState<number | null>(null);
 

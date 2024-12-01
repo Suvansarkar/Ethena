@@ -12,7 +12,6 @@ export default function SubmissionPanel({ size }: { size: number }) {
   const updateReview = useResposeStore((state) => state.updateReview);
 
   const selected = useOptionStore((state) => state.selected);
-  const setSelected = useOptionStore((state) => state.setSelected);
   return (
     <div className="flex bg-white rounded-3xl py-6 px-7 justify-between items-center gap-2">
       <div className="flex gap-2 md:gap-6 items-center">

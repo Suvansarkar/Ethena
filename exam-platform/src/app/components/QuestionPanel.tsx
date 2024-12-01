@@ -1,11 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Topic from "./elements/Topic";
 import Image from "next/image";
 import { useOptionStore, useResposeStore, useStore } from "../lib/store";
 
-export default function QuestionPanel({ questions }: { questions: any[] }) {
+interface Question {
+  topic: string;
+  content: string;
+  positiveMark: number;
+  negativeMark: number;
+  options: { content: string }[];
+}
+
+export default function QuestionPanel({
+  questions,
+}: {
+  questions: Question[];
+}) {
   const currentQuestion = useStore((state) => state.currentQuestion);
   const selectedStore = useOptionStore((state) => state.selected);
   const setSelectedStore = useOptionStore((state) => state.setSelected);
