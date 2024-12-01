@@ -6,7 +6,7 @@ import TopicHeader from "../components/TopicHeader";
 
 export default function Exam() {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen max-h-screen">
       <ExamHeader />
       <div className="flex-grow flex flex-col bg-[#F1F1F1] p-4 px-8 gap-6">
         <TopicHeader />
