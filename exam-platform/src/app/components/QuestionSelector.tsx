@@ -3,9 +3,42 @@ import { ChevronDown, EllipsisVertical, Info } from "lucide-react";
 import Button from "./elements/Button";
 import Image from "next/image";
 import { useState } from "react";
+import { useResposeStore, useStore } from "../lib/store";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { getScore } from "../lib/utils";
 
-export default function QuestionSelector() {
+export default function QuestionSelector({
+  questions,
+  id,
+}: {
+  questions: any[];
+  id: string;
+}) {
   const [expanded, setExpanded] = useState<Boolean>(true);
+
+  const setQuestion = useStore((state) => state.setQuestion);
+  const currentQuestion = useStore((state) => state.currentQuestion);
+  const answers = useResposeStore((state) => state.answers);
+
+  const router = useRouter();
+
+  function getColor(id: number) {
+    const result = answers.find((answer) => answer.id === id);
+    if (result == undefined) {
+      return "border border-black hover:bg-black/20";
+    } else if (result.markedForReview) {
+      if (result.selectedOption !== -1) {
+        return "bg-blue-500";
+      } else {
+        return "bg-orange-400";
+      }
+    } else if (result.selectedOption === -1) {
+      return "bg-slate-400";
+    } else {
+      return "bg-green-400";
+    }
+  }
   return (
     <div>
       <div
@@ -26,15 +59,30 @@ export default function QuestionSelector() {
             />
           </button>
 
-          <button className="p-2 rounded-full hover:bg-black/20 flex justify-center items-center">
+          <button
+            className="p-2 rounded-full hover:bg-black/20 flex justify-center items-center"
+            onClick={() => {
+              alert("This function has not been implemented~!");
+            }}
+          >
             <Image src="/user.png" width={32} height={32} alt="left" />
             <ChevronDown size={24} className="stroke-black" />
           </button>
-          <button className="flex py-1 px-2 border border-black items-center justify-center rounded-lg gap-2 hover:bg-black/20">
+          <button
+            className="flex py-1 px-2 border border-black items-center justify-center rounded-lg gap-2 hover:bg-black/20"
+            onClick={() => {
+              alert("Here are some sample instructions! blah blah blah.");
+            }}
+          >
             <Info size={20} className="stroke-black" />
             <span className="text-black">Instruction</span>
           </button>
-          <button className="p-2 rounded-full hover:bg-black/20 flex justify-center items-center">
+          <button
+            className="p-2 rounded-full hover:bg-black/20 flex justify-center items-center"
+            onClick={() => {
+              alert("This function has not been implemented~!");
+            }}
+          >
             <EllipsisVertical size={24} className="stroke-black" />
           </button>
         </div>
@@ -65,11 +113,14 @@ export default function QuestionSelector() {
           </div>
         </div>
         <div className="w-full flex flex-col h-[52dvh] overflow-y-auto p-5">
-          <div className="grid grid-cols-6 gap-4 p-0 flex-grow">
-            {Array.from({ length: 57 }).map((_, index) => (
+          <div className="grid grid-cols-6 gap-4 p-0 ">
+            {questions.map((question, index) => (
               <button
                 key={index}
-                className="w-11 h-11 rounded-full border border-black hover:bg-black/20"
+                className={`w-11 h-11 rounded-full ${getColor(index)}`}
+                onClick={() => {
+                  setQuestion(index);
+                }}
               >
                 {index + 1}
               </button>
@@ -77,9 +128,11 @@ export default function QuestionSelector() {
           </div>
         </div>
         <div className="w-full border-t py-6 flex items-center justify-center basis-auto flex-grow-0 flex-shrink-0 ">
-          <button className="px-20 h-[48px] rounded-lg bg-[#7A1DC5] text-white font-bold">
-            Submit Test
-          </button>
+          <Link href={`/credits/${id}`}>
+            <button className="px-20 h-[48px] rounded-lg bg-[#7A1DC5] text-white font-bold">
+              Submit Test
+            </button>
+          </Link>
         </div>
       </div>
       <div
@@ -102,10 +155,13 @@ export default function QuestionSelector() {
         </div>
         <div className="w-full flex flex-col overflow-y-auto p-5 max-h-[calc(100%-72px)] h-[60dvh] items-center justify-start">
           <div className="grid grid-cols-1 gap-4 p-0">
-            {Array.from({ length: 57 }).map((_, index) => (
+            {questions.map((question, index) => (
               <button
                 key={index}
-                className="w-11 h-11 rounded-full border border-black hover:bg-black/20"
+                className={`w-11 h-11 rounded-full ${getColor(index)}`}
+                onClick={() => {
+                  setQuestion(index);
+                }}
               >
                 {index + 1}
               </button>
