@@ -31,17 +31,20 @@ export default function QuestionPanel({ questions }: { questions: any[] }) {
           >
             Question {currentQuestion + 1}
           </Topic>
-          <Topic className="bg-transparent font-semibold" from={-1}>
+          <Topic
+            className="bg-transparent font-semibold hidden md:flex"
+            from={-1}
+          >
             Topic: {questions[currentQuestion].topic}
           </Topic>
         </div>
         <Topic
-          className="bg-transparent border border-[#D1D1D1] text-sm text-nowrap"
+          className="bg-transparent border border-[#D1D1D1] text-sm text-nowrap hidden md:flex"
           from={-1}
         >
           Single Choice Type Question
         </Topic>
-        <div className="flex w-full justify-between text-sm pl-6">
+        <div className="w-full justify-between text-sm pl-6 hidden md:flex">
           <div className="flex items-center border border-[#D1D1D1] rounded-full">
             <div className="flex justify-between items-center gap-2 py-[10px] px-4 border-r border-[#D1D1D1]">
               <span>Markings: </span>

@@ -14,8 +14,8 @@ export default function SubmissionPanel({ size }: { size: number }) {
   const selected = useOptionStore((state) => state.selected);
   const setSelected = useOptionStore((state) => state.setSelected);
   return (
-    <div className="flex bg-white rounded-3xl py-6 px-7 justify-between items-center">
-      <div className="flex gap-6">
+    <div className="flex bg-white rounded-3xl py-6 px-7 justify-between items-center gap-2">
+      <div className="flex gap-2 md:gap-6 items-center">
         <div
           onClick={() => {
             updateAnswer(currentQuestion, selected, false);
@@ -25,7 +25,7 @@ export default function SubmissionPanel({ size }: { size: number }) {
             incQuestion();
           }}
         >
-          <Button className="!bg-[#7A1DC5] !py-[14px] !px-6 w-[200px]">
+          <Button className="!bg-[#7A1DC5] !p-2 !md:py-[14px] !md:px-6 md:w-[200px]">
             Save & Next
           </Button>
         </div>
@@ -39,19 +39,19 @@ export default function SubmissionPanel({ size }: { size: number }) {
             incQuestion();
           }}
         >
-          <Button className="!text-black !border-[#333336] !py-[14px] !px-6 w-[200px]">
+          <Button className="!text-black !border-[#333336] !p-2 !md:py-[14px] !md:px-6 md:w-[200px]">
             Mark for review
           </Button>
         </div>
       </div>
-      <div className="flex gap-6">
+      <div className="flex gap-2 md:gap-6">
         <div
           onClick={() => {
             if (currentQuestion === 0) return;
             decQuestion();
           }}
         >
-          <Button className="!text-black !border-[#333336] !py-[14px] !px-6 w-[120px]">
+          <Button className="!text-black !border-[#333336] !p-2 !md:py-[14px] !md:px-6 md:w-[120px]">
             Previous
           </Button>
         </div>
@@ -61,7 +61,7 @@ export default function SubmissionPanel({ size }: { size: number }) {
             incQuestion();
           }}
         >
-          <Button className="!text-black !border-[#333336] !py-[14px] !px-6 w-[120px]">
+          <Button className="!text-black !border-[#333336] !p-2 !md:py-[14px] !md:px-6 md:w-[120px]">
             Next
           </Button>
         </div>

@@ -11,7 +11,7 @@ interface ExamHeaderProps {
 export default function ExamHeader(props: ExamHeaderProps) {
   return (
     <div className="w-full h-[80px] bg-[#2E064C] flex px-12 py-5 justify-between items-center">
-      <div className="text-white font-semibold text-2xl font-satoshi text-nowrap">
+      <div className="text-white font-semibold text-base md:text-2xl font-satoshi text-nowrap">
         {props.title}
       </div>
       <div className="flex items-center justify-center gap-4 text-sm">
@@ -19,6 +19,7 @@ export default function ExamHeader(props: ExamHeaderProps) {
           onClick={() => {
             alert("This feature has not been implemented!");
           }}
+          className="hidden md:block"
         >
           <Button>
             <Image src="/calculate.png" width={20} height={20} alt="calc" />
@@ -30,6 +31,7 @@ export default function ExamHeader(props: ExamHeaderProps) {
           onClick={() => {
             alert("This feature has not been implemented!");
           }}
+          className="hidden md:block"
         >
           <Button>
             <Image src="/timer_pause.png" width={20} height={20} alt="timer" />
@@ -38,13 +40,13 @@ export default function ExamHeader(props: ExamHeaderProps) {
         </div>
 
         <div className=" flex gap-2 bg-white/20 p-2 rounded-md px-4 font-semibold items-center text-base">
-          <span className="text-white">Time Left</span>
+          <span className="text-white hidden md:block">Time Left</span>
           <span className="text-white">
             {/* <Countdown date={Date.now() + 100000} /> */}
             00:00:00
           </span>
         </div>
-        <Button>Exit</Button>
+        <Button className="hidden md:block">Exit</Button>
       </div>
     </div>
   );

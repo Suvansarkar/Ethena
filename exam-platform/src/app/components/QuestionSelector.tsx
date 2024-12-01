@@ -40,7 +40,7 @@ export default function QuestionSelector({
     }
   }
   return (
-    <div>
+    <div className="hidden lg:block">
       <div
         className={`bg-white h-full w-[384px] rounded-3xl flex flex-col flex-shrink-0 ${
           expanded ? "" : "hidden"
