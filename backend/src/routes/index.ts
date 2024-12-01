@@ -1,7 +1,14 @@
 import { Router, Request, Response } from "express";
-import { createTest, getTest, getTests } from "../controllers/test.controller";
+import {
+  createTest,
+  getTest,
+  getTests,
+  submitTest,
+  updateTest,
+} from "../controllers/test.controller";
 import { Student, Test } from "../types/types";
 import { seedTest } from "../lib/test.seed";
+import { createStudent } from "../controllers/student.controller";
 
 const router = Router();
 
@@ -17,12 +24,15 @@ router.get("/about", (req: Request, res: Response) => {
   });
 });
 
-router.post("/create/exam", createTest);
+router.post("/create/student", createStudent);
 
-router.post("/create/student", createTest);
-
+router.post("/create/test", createTest);
+router.post("/update/test/:id", updateTest);
 router.get("/test", getTests);
 router.get("/test/:id", getTest);
+
+router.post("/submit/test/:testId", submitTest);
+
 router.post("/seed/test", seedTest);
 
 export default router;

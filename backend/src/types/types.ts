@@ -7,13 +7,24 @@ export interface Test {
   title: string;
   description: string;
   duration: number;
+  topics: Topic[];
   questions: Question[];
+}
+
+export interface Topic {
+  label: string;
+  from: number;
+  to: number;
 }
 
 export interface Question {
   content: string;
   options: Option[];
   correctOption: number;
+  topic: string;
+  id: number;
+  positiveMark: number;
+  negativeMark: number;
 }
 
 export interface Student {
